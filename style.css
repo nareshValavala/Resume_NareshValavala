@@ -1,0 +1,767 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+  .hero,
+.section,
+.inkpad-border {
+  scroll-margin-top: 90px;
+}
+.paper-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fffdf8;
+  border: 2px solid #e0dccc;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+
+        :root {
+            --ink-black: #1a1a1a;
+            --stamp-red: #dc2626;
+            --stamp-blue: #2563eb;
+            --paper: #f8f6f0;
+            --aged-paper: #f0ede6;
+            --ink-fade: #4a4a4a;
+            --stamp-green: #16a34a;
+         
+  --stamp-gold: #8e6f3e;
+  --stamp-gray: #555;
+  --stamp-purple: #5d4e7d;
+
+
+        }
+
+        body {
+       
+ 
+
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--paper);
+            color: var(--ink-black);
+            line-height: 1.4;
+            overflow-x: hidden;
+            
+        }
+
+        /* Ink pad texture effects */
+        .ink-texture {
+            position: relative;
+        }
+
+        .ink-texture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0,0,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0,0,0,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0,0,0,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Stamp style containers */
+        .stamp-box {
+            border: 3px solid var(--stamp-red);
+            background: var(--paper);
+            position: relative;
+            padding: 2rem;
+            margin: 1rem 0;
+            transform: rotate(-0.5deg);
+            box-shadow: 
+                inset 0 0 20px rgba(220, 38, 38, 0.1),
+                0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stamp-box::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid var(--stamp-red);
+            opacity: 0.6;
+        }
+
+        .stamp-box.blue {
+            border-color: var(--stamp-blue);
+            transform: rotate(0.5deg);
+        }
+
+        .stamp-box.blue::before {
+            border-color: var(--stamp-blue);
+        }
+
+        .stamp-box.green {
+            border-color: var(--stamp-green);
+            transform: rotate(-0.3deg);
+        }
+
+        .stamp-box.green::before {
+            border-color: var(--stamp-green);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation - Stamp style */
+        nav {
+   
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--aged-paper);
+  border-bottom: 2px dashed var(--ink-fade);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--stamp-red);
+            border: 2px solid var(--stamp-red);
+            padding: 0.5rem 1rem;
+            background: var(--paper);
+            transform: rotate(-1deg);
+            position: relative;
+        }
+
+        .logo::after {
+            content: 'DOWNLOAD RESUME';
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            font-size: 0.4rem;
+            background: var(--stamp-red);
+            color: white;
+            padding: 2px 6px;
+            transform: rotate(5deg);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--ink-black);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            border: 1px dashed transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--stamp-blue);
+            background: rgba(37, 99, 235, 0.1);
+            transform: rotate(-0.5deg);
+        }
+
+        /* Hero Section - Stamp Style */
+        .hero {
+  
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            
+            padding-top: 7rem;
+        }
+
+        .hero-content {
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+.inkpad-border {
+  border: 6px solid rgb(132, 128, 128);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  
+  background-size: cover;
+  padding: 2rem;
+  box-shadow:
+    0 0 0 2px rgba(132, 128, 128, 0.9),
+    0 0 10px rgba(132, 128, 128, 0.2),
+    inset 0 0 3px rgba(132, 128, 128, 0.3);
+  border-radius: 4px;
+  position: relative;
+}
+
+        /* Large stamp-style title */
+        .hero-stamp {
+            display: inline-block;
+            border: 6px solid var(--stamp-red);
+            padding: 2rem 3rem;
+            background: var(--paper);
+            transform: rotate(-1deg);
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: 
+                inset 0 0 30px rgba(220, 38, 38, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-stamp::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid var(--stamp-red);
+            opacity: 0.5;
+        }
+
+        .hero-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--stamp-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .hero-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            color: var(--ink-black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* Approval stamps scattered around */
+        .approval-stamp {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: 3px solid;
+            padding: 0.5rem 1rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .stamp-approved {
+            color: var(--stamp-green);
+            border-color: var(--stamp-green);
+            top: 20%;
+            right: 10%;
+            transform: rotate(15deg);
+        }
+
+        .stamp-certified {
+            color: var(--stamp-blue);
+            border-color: var(--stamp-blue);
+            bottom: 30%;
+            left: 5%;
+            transform: rotate(-12deg);
+        }
+
+        .stamp-verified {
+            color: var(--stamp-red);
+            border-color: var(--stamp-red);
+        
+            right: 15%;
+            transform: rotate(8deg);
+        }
+        .stamp-achievement {
+  color: var(--stamp-gold);
+  border-color: var(--stamp-gold);
+  animation-delay: 0.9s;
+}
+
+.stamp-internal {
+  color: var(--stamp-gray);
+  border-color: var(--stamp-gray);
+  animation-delay: 1.1s;
+}
+
+.stamp-award {
+  color: var(--stamp-purple);
+  border-color: var(--stamp-purple);
+  animation-delay: 1.3s;
+}
+
+
+        .hero-description {
+            max-width: 600px;
+            margin: 2rem auto;
+            font-size: 1.1rem;
+            color: var(--ink-fade);
+            line-height: 1.6;
+        }
+
+        /* Stamp-style buttons */
+        .stamp-btn {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1rem 2rem;
+            border: 3px solid;
+            background: var(--paper);
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stamp-btn:hover {
+            transform: rotate(-1deg) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stamp-btn.red {
+            color: var(--stamp-red);
+            border-color: var(--stamp-red);
+        }
+
+        .stamp-btn.blue {
+            color: var(--stamp-blue);
+            border-color: var(--stamp-blue);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+             opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-stamp {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid var(--stamp-blue);
+            padding: 1rem 2rem;
+            background: var(--paper);
+            transform: rotate(-0.5deg);
+            color: var(--stamp-blue);
+            margin-bottom: 2rem;
+        }
+
+        /* About section - File folder style */
+        .about-folder {
+            background: var(--aged-paper);
+            border: 2px solid var(--ink-fade);
+            border-radius: 0;
+            padding: 2rem;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .about-folder::before {
+            content: 'CONFIDENTIAL';
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: var(--aged-paper);
+            color: var(--stamp-red);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--stamp-red);
+            transform: rotate(-1deg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--ink-black);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills as stamps */
+        .skills-stamps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-stamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 0.7rem 1.2rem;
+            border: 2px solid;
+            background: var(--paper);
+            transform: rotate(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .skill-stamp:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .skill-stamp:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .skill-stamp:nth-child(3n) {
+            color: var(--stamp-red);
+            border-color: var(--stamp-red);
+        }
+
+        .skill-stamp:nth-child(3n+1) {
+            color: var(--stamp-blue);
+            border-color: var(--stamp-blue);
+        }
+
+        .skill-stamp:nth-child(3n+2) {
+            color: var(--stamp-green);
+            border-color: var(--stamp-green);
+        }
+
+        .skill-stamp:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        /* Projects as documents */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-doc {
+            background: var(--paper);
+            border: 2px solid var(--ink-fade);
+            padding: 0;
+            position: relative;
+            transform: rotate(-0.5deg);
+            transition: all 0.3s ease;
+        }
+
+        .project-doc:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+
+        .project-doc:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: var(--aged-paper);
+            padding: 1rem;
+            border-bottom: 1px dashed var(--ink-fade);
+            position: relative;
+        }
+
+        .project-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: var(--ink-black);
+            margin: 0;
+        }
+
+        .project-status {
+            position: absolute;
+            top: -10px;
+            right: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.7rem;
+            color: var(--stamp-green);
+            border: 2px solid var(--stamp-green);
+            padding: 0.3rem 0.8rem;
+            background: var(--paper);
+            transform: rotate(5deg);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: var(--ink-fade);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact - Official document style */
+        .contact-doc {
+            background: var(--aged-paper);
+            border: 3px solid var(--ink-black);
+            padding: 3rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .contact-doc::before {
+            content: 'OFFICIAL DOCUMENT';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--aged-paper);
+            color: var(--ink-black);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--ink-black);
+        }
+
+        .contact-info {
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 2;
+            margin: 2rem 0;
+        }
+
+        .contact-info strong {
+            color: var(--stamp-red);
+        }
+
+        /* Footer - Stamp pad */
+        footer {
+            background: var(--ink-black);
+            color: var(--paper);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 3px solid var(--stamp-red);
+        }
+
+        .footer-stamp {
+            display: inline-block;
+            border: 2px solid var(--paper);
+            padding: 1rem 2rem;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-stamp {
+                padding: 1.5rem 2rem;
+            }
+
+            .approval-stamp {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .skills-stamps {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        /* Animation for stamps appearing */
+        @keyframes stampAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            70% {
+                transform: scale(1.1) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(-1deg);
+            }
+        }
+
+        .stamp-animate {
+            animation: stampAppear 0.6s ease-out;
+        }
+        /* Animate fade-in and slide-up */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section, .project-doc, .contact-doc, .about-folder {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards;
+  animation-delay: 0.3s;
+  will-change: transform, opacity;
+}
+
+/* Staggered animation for grid items */
+.projects-grid .project-doc:nth-child(1) { animation-delay: 0.4s; }
+.projects-grid .project-doc:nth-child(2) { animation-delay: 0.6s; }
+.projects-grid .project-doc:nth-child(3) { animation-delay: 0.8s; }
+
+/* Hero title animation */
+.hero-title, .hero-subtitle, .hero-description {
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+.hero-title { animation-delay: 0.3s; }
+.hero-subtitle { animation-delay: 0.5s; }
+.hero-description { animation-delay: 0.7s; }
+
+/* Profile image interaction */
+.profile-pic img {
+  transition: transform 0.4s ease;
+}
+.profile-pic img:hover {
+  transform: scale(1.03);
+}
+
+.cert-plot {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+.badge img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+
+
+.stamp-animate.animated {
+  animation: stampIn 0.6s ease-out forwards;
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(4) rotate(-20deg);
+    filter: blur(4px);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.05) rotate(2deg);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+}
+/* Flow-in animation base */
+.flow-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* When visible, animate in */
+.flow-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional stagger delay using delay-x classes */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
+.delay-8 { transition-delay: 0.8s; }
+
+/* Set canvas size to prevent zero size rendering */
+canvas {
+  width: 100% !important;
+  max-width: 600px;
+  height: 400px !important;
+  margin: 2rem auto;
+  display: block;
+}
