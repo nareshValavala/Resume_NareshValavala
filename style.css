@@ -142,6 +142,7 @@
             padding: 1rem 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            flex-direction: row-reverse;
         }
 
         .logo {
@@ -224,6 +225,13 @@
   border-radius: 4px;
   position: relative;
 }
+.profile-photo {
+  border: 2px solid #eee;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  max-width: 200px; /* optional: keep photo size consistent */
+}
+
 
         /* Large stamp-style title */
         .hero-stamp {
