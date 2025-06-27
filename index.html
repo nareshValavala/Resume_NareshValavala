@@ -11,13 +11,13 @@
   <nav class="flow-in delay-1">
     <div class="nav-content">
  
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#credentials">Creds</a></li>
-        <li><a href="#about">File</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <ul class="nav-links">
+  <li class="always-show"><a href="#home">Home</a></li>
+  <li class="hide-on-mobile"><a href="#credentials">Creds</a></li>
+  <li class="hide-on-mobile"><a href="#about">File</a></li>
+  <li class="hide-on-mobile"><a href="#projects">Work</a></li>
+  <li class="always-show"><a href="#contact">Contact</a></li>
+</ul>
     </div>
   </nav>
 
@@ -321,11 +321,19 @@
               }
             },
             scales: {
-              x: {
-                title: { display: true, text: 'Year Earned' },
-                ticks: { stepSize: 1, color: '#444' },
-                grid: { color: 'rgba(0,0,0,0.05)' }
-              },
+             x: {
+  type: 'linear',
+  title: { display: true, text: 'Year Earned' },
+  ticks: {
+    stepSize: 1,
+    color: '#444',
+    callback: value => `${value}`
+  },
+  min: 2005,
+  max: 2025,
+  grid: { color: 'rgba(0,0,0,0.05)' }
+}
+,
               y: {
                 title: { display: true, text: 'Domain' },
                 ticks: {

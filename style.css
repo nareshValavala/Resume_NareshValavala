@@ -635,6 +635,9 @@
             .skills-stamps {
                 justify-content: center;
             }
+			 .hide-on-mobile {
+    display: none;
+  }
 
             .nav-links {
                 gap: 1rem;
